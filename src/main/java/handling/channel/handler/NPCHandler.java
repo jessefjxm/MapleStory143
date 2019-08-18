@@ -208,6 +208,15 @@ public class NPCHandler {
                 int npc = slea.readInt();
                 slea.readInt();
                 if (q.hasEndScript()) {
+					// 内容同 case 5
+					if (chr.hasBlockedInventory()) {
+						c.announce(MaplePacketCreator.enableActions());
+						return;
+					}
+					QuestScriptManager.getInstance().endQuest(c, npc, quest, false);
+					if (chr.isShowPacket()) {
+						chr.dropMessage(6, "完成脚本任务 NPC：" + npc + " Quest: " + quest);
+					}
                     return;
                 }
                 if (slea.available() >= 4) {

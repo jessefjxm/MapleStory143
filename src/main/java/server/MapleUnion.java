@@ -21,24 +21,21 @@ public class MapleUnion {
 	 * 记录各种卡的组件的坐标，以中心为{0,0}建立直角坐标系
 	 * 
 	 * @param 数据格式位：modules[品质][职业族][x][y]
-	 * @param 品质：B-0 A-1 S-2 SS-3 SS-4
-	 * @param 职业族：战士-0 魔法师-1 弓箭手-2 飞侠-3 海盗-4
+	 * @param 品质：B-0                       A-1 S-2 SS-3 SS-4
+	 * @param 职业族：战士-0                     魔法师-1 弓箭手-2 飞侠-3 海盗-4
 	 */
 	private static final int[][][][] modules = {
 			// 品质 B
 			{ { { 0, 0 } }, { { 0, 0 } }, { { 0, 0 } }, { { 0, 0 } }, { { 0, 0 } } },
 			// 品质 A
-			{ { { 0, 0 }, { 0, 1 } }, { { 0, 0 }, { 0, 1 } }, { { 0, 0 }, { 0, 1 } },
-					{ { 0, 0 }, { 0, 1 } }, { { 0, 0 }, { 0, 1 } } },
+			{ { { 0, 0 }, { 0, 1 } }, { { 0, 0 }, { 0, 1 } }, { { 0, 0 }, { 0, 1 } }, { { 0, 0 }, { 0, 1 } },
+					{ { 0, 0 }, { 0, 1 } } },
 			// 品质 S
-			{ { { 0, 0 }, { 0, 1 }, { 1, 0 } }, { { 0, 0 }, { 0, 1 }, { 0, -1 } },
-					{ { 0, 0 }, { 0, 1 }, { 0, -1 } }, { { 0, 0 }, { 0, 1 }, { 0, -1 } },
-					{ { 0, 0 }, { 0, 1 }, { 1, 0 } } },
+			{ { { 0, 0 }, { 0, 1 }, { 1, 0 } }, { { 0, 0 }, { 0, 1 }, { 0, -1 } }, { { 0, 0 }, { 0, 1 }, { 0, -1 } },
+					{ { 0, 0 }, { 0, 1 }, { 0, -1 } }, { { 0, 0 }, { 0, 1 }, { 1, 0 } } },
 			// 品质 SS
-			{ { { 0, 0 }, { 0, 1 }, { 1, 0 }, { 1, 1 } },
-					{ { 0, 0 }, { -1, 1 }, { -1, -1 }, { -1, 0 } },
-					{ { 0, 0 }, { 0, 1 }, { 0, -1 }, { 0, 2 } },
-					{ { 0, 0 }, { 0, 1 }, { 0, -1 }, { 1, 1 } },
+			{ { { 0, 0 }, { 0, 1 }, { 1, 0 }, { 1, 1 } }, { { 0, 0 }, { -1, 1 }, { -1, -1 }, { -1, 0 } },
+					{ { 0, 0 }, { 0, 1 }, { 0, -1 }, { 0, 2 } }, { { 0, 0 }, { 0, 1 }, { 0, -1 }, { 1, 1 } },
 					{ { 0, 0 }, { 0, 1 }, { 1, 0 }, { -1, 1 } } },
 			// 品质 SSS
 			{ { { 0, 0 }, { 0, 1 }, { 1, 0 }, { 1, 1 }, { 0, 2 } },
@@ -52,18 +49,16 @@ public class MapleUnion {
 	 * @param 注意WZ里的数据把所有职业ID都/10了
 	 * @param 第一个是正向，第二个是反向，一般用第二个
 	 */
-	private static final int[][] careerIdMapping = { { 11, 71000011 }, { 12, 71000012 },
-			{ 13, 71000013 }, { 21, 71000021 }, { 22, 71000022 }, { 23, 71000023 },
-			{ 31, 71000031 }, { 32, 71000032 }, { 41, 71000041 }, { 42, 71000042 },
-			{ 43, 71000043 }, { 51, 71000051 }, { 52, 71000052 }, { 53, 71000053 },
-			{ 311, 71000311 }, { 312, 71000312 }, { 321, 71000321 }, { 331, 71000331 },
-			{ 351, 71000351 }, { 371, 71000371 }, { 361, 71000361 }, { 211, 71000211 },
-			{ 221, 71000221 }, { 231, 71000231 }, { 241, 71000241 }, { 271, 71000271 },
-			{ 111, 71000111 }, { 121, 71000121 }, { 131, 71000131 }, { 141, 71000141 },
-			{ 151, 71000151 }, { 511, 71000511 }, { 611, 71000611 }, { 641, 71000641 },
-			{ 651, 71000651 }, { 1011, 71000711 }, { 251, 71000251 }, { 1421, 71000921 },
-			{ 1521, 71000922 }, { 1551, 71000951 }, { 1000090, 71009001 }, { 33, 71000952 },
-			{ 411, 71000411 }, { 421, 71000421 }, { 57, 71000057 }, { 1121, 71000821 } };
+	private static final int[][] careerIdMapping = { { 11, 71000011 }, { 12, 71000012 }, { 13, 71000013 },
+			{ 21, 71000021 }, { 22, 71000022 }, { 23, 71000023 }, { 31, 71000031 }, { 32, 71000032 }, { 41, 71000041 },
+			{ 42, 71000042 }, { 43, 71000043 }, { 51, 71000051 }, { 52, 71000052 }, { 53, 71000053 }, { 311, 71000311 },
+			{ 312, 71000312 }, { 321, 71000321 }, { 331, 71000331 }, { 351, 71000351 }, { 371, 71000371 },
+			{ 361, 71000361 }, { 211, 71000211 }, { 221, 71000221 }, { 231, 71000231 }, { 241, 71000241 },
+			{ 271, 71000271 }, { 111, 71000111 }, { 121, 71000121 }, { 131, 71000131 }, { 141, 71000141 },
+			{ 151, 71000151 }, { 511, 71000511 }, { 611, 71000611 }, { 641, 71000641 }, { 651, 71000651 },
+			{ 1011, 71000711 }, { 251, 71000251 }, { 1421, 71000921 }, { 1521, 71000922 }, { 1551, 71000951 },
+			{ 1000090, 71009001 }, { 33, 71000952 }, { 411, 71000411 }, { 421, 71000421 }, { 57, 71000057 },
+			{ 1121, 71000821 } };
 	private static HashMap<Integer, Integer> cardIdMapping = new HashMap<>();
 	// 整个拼图版的边长
 	private static final int[] boardLength = { 20, 22 };
@@ -81,13 +76,12 @@ public class MapleUnion {
 		// 内圈默认顺序：力量，敏捷，智力，运气，物攻，魔攻，HP，MP
 		STR, DEX, INT, LUK, PHYSICAL_ATTACK, MAGICAL_ATTACK, HP, MP,
 		// 外圈默认顺序：状态异常抗性，经验获取，暴击率，首领伤害，稳如泰山，增益时间，无视防御，暴击伤害
-		DEBUFF_RESISTANCE, EXP_GAIN, CRITICAL_CHANGE, BOSS_DAMAGE, STAND_CHANCE, BUFF_TIME,
-		IGNORE_DEFENCE, CRITICAL_DAMAGE
+		DEBUFF_RESISTANCE, EXP_GAIN, CRITICAL_CHANGE, BOSS_DAMAGE, STAND_CHANCE, BUFF_TIME, IGNORE_DEFENCE,
+		CRITICAL_DAMAGE
 	}
 
 	// 每种属性每个格子的加成
-	private static final double[] attrBonus = { 5, 5, 5, 5, 1, 1, 250, 250, 1, 0.25, 1, 1, 1, 1, 1,
-			0.5 };
+	private static final double[] attrBonus = { 5, 5, 5, 5, 1, 1, 250, 250, 1, 0.25, 1, 1, 1, 1, 1, 0.5 };
 
 	// 缓存玩家数据
 	private HashMap<Integer, UnionInfo> playerInfo = new HashMap<>();
@@ -105,18 +99,17 @@ public class MapleUnion {
 		// 记录 <每个扇区> 对应的是什么属性
 		// 定义：扇区编号按从左到右、从上到下、从里到外，共计16个
 		private int[] attrMapping = { AttributeTypeID.STR.ordinal(), AttributeTypeID.DEX.ordinal(),
-				AttributeTypeID.INT.ordinal(), AttributeTypeID.LUK.ordinal(),
-				AttributeTypeID.PHYSICAL_ATTACK.ordinal(), AttributeTypeID.MAGICAL_ATTACK.ordinal(),
-				AttributeTypeID.HP.ordinal(), AttributeTypeID.MP.ordinal(),
+				AttributeTypeID.INT.ordinal(), AttributeTypeID.LUK.ordinal(), AttributeTypeID.PHYSICAL_ATTACK.ordinal(),
+				AttributeTypeID.MAGICAL_ATTACK.ordinal(), AttributeTypeID.HP.ordinal(), AttributeTypeID.MP.ordinal(),
 				AttributeTypeID.DEBUFF_RESISTANCE.ordinal(), AttributeTypeID.EXP_GAIN.ordinal(),
 				AttributeTypeID.CRITICAL_CHANGE.ordinal(), AttributeTypeID.BOSS_DAMAGE.ordinal(),
 				AttributeTypeID.STAND_CHANCE.ordinal(), AttributeTypeID.BUFF_TIME.ordinal(),
-				AttributeTypeID.IGNORE_DEFENCE.ordinal(),
-				AttributeTypeID.CRITICAL_DAMAGE.ordinal() };
+				AttributeTypeID.IGNORE_DEFENCE.ordinal(), AttributeTypeID.CRITICAL_DAMAGE.ordinal() };
 		// 记录 <每个扇区> 当前占据了多少格子，一个格子就加成一次，但是伤害不同
 		private int[] sectionCount = new int[16];
 		// 记录 <每种属性> 当前加成多少，顺序基于 enum AttributeTypeID
 		private double[] attributes = new double[16];
+		private HashMap<Integer, Integer> attributeSkill = new HashMap<>();
 		// 记录 <各个组件> 的当前坐标，方便查询
 		private HashMap<Integer, int[]> moduleCoords = new HashMap<>();
 		// 角色卡等级和
@@ -128,8 +121,7 @@ public class MapleUnion {
 		// 受限于联盟等级，当前拼图版的有效边长
 		private int[] curBoardLength = { 10, 12 };
 
-		public UnionInfo(int playerId, int levelSum, int unionLevel, int unionCoin, String grids,
-				String attrMapping) {
+		public UnionInfo(int playerId, int levelSum, int unionLevel, int unionCoin, String grids, String attrMapping) {
 			this.levelSum = levelSum;
 			this.playerId = playerId;
 			this.unionLevel = unionLevel < 0 ? 101 : unionLevel;
@@ -149,8 +141,8 @@ public class MapleUnion {
 			for (int i = 0; i < 16; i++) {
 				this.attrMapping[i] = i;
 			}
-			// 更新当前拼图版的有效边长 
-			updateCurBoardLength() ;
+			// 更新当前拼图版的有效边长
+			updateCurBoardLength();
 			// 更新统计数据，并载入各个组件的角色卡ID-坐标映射
 			for (int i = boardLength[0] / 2 - curBoardLength[0] / 2; i < boardLength[0] / 2
 					+ curBoardLength[0] / 2; i++) {
@@ -180,9 +172,9 @@ public class MapleUnion {
 			 * 基准坐标矩阵
 			 * 
 			 * @param -1,-3 -1,-2 -1,-1 -1,0 -1,1 -1,2
-			 * @param 0,-3 0,-2 0,-1 0,0 0,1 0,2
-			 * @param 1,-3 1,-2 1,-1 1,0 1,1 1,2
-			 * @param 2,-3 2,-2 2,-1 2,0 2,1 2,2
+			 * @param 0,-3  0,-2 0,-1 0,0 0,1 0,2
+			 * @param 1,-3  1,-2 1,-1 1,0 1,1 1,2
+			 * @param 2,-3  2,-2 2,-1 2,0 2,1 2,2
 			 */
 			int isOuter = (x < 5 || x > 14 || y < 5 || y > 16) ? 8 : 0;
 			x -= boardLength[0] / 2 + 1;
@@ -237,8 +229,12 @@ public class MapleUnion {
 			return attributes;
 		}
 
+		public HashMap<Integer, Integer> getAttributeSkill() {
+			return attributeSkill;
+		}
+
 		/**
-		 *更新当前拼图版的有效边长：302 205 203 201 104 101
+		 * 更新当前拼图版的有效边长：302 205 203 201 104 101
 		 *
 		 * @param 无
 		 * @return 无
@@ -273,8 +269,7 @@ public class MapleUnion {
 		 * @return 是否成功
 		 */
 		public boolean upgradeUnion() {
-			int nextLevel = unionLevel % 100 == 5 ? (unionLevel / 100 + 1) * 100 + 1
-					: unionLevel + 1;
+			int nextLevel = unionLevel % 100 == 5 ? (unionLevel / 100 + 1) * 100 + 1 : unionLevel + 1;
 			// 暂时就 4*5 个等级
 			if (nextLevel < 101 || nextLevel > 405)
 				return false;
@@ -411,6 +406,7 @@ public class MapleUnion {
 			for (int i = 0; i < sectionCount.length; i++) {
 				int attributeTypeID = attrMapping[i];
 				attributes[attributeTypeID] = sectionCount[i] * attrBonus[attributeTypeID];
+				attributeSkill.put(71004000 + attributeTypeID, sectionCount[i]);
 			}
 		}
 	}
@@ -461,8 +457,8 @@ public class MapleUnion {
 		PreparedStatement ps = con.prepareStatement("CREATE TABLE IF NOT EXISTS `maple_union` ("
 				+ "`id` int(11) NOT NULL AUTO_INCREMENT, `playerid` int(11) NOT NULL,"
 				+ "`levelsum` int(11) NOT NULL DEFAULT '0',`level` int(11) NOT NULL DEFAULT '101',`coin` int(11) NOT NULL DEFAULT '0', "
-				+ "`grids` text NOT NULL DEFAULT '', `attrMap` text NOT NULL DEFAULT '', "
-				+ "PRIMARY KEY (`id`)" + ") ;");
+				+ "`grids` text NOT NULL DEFAULT '', `attrMap` text NOT NULL DEFAULT '', " + "PRIMARY KEY (`id`)"
+				+ ") ;");
 		ps.executeUpdate();
 		ps.close();
 		con.close();
@@ -477,13 +473,12 @@ public class MapleUnion {
 	public void loadFromDb() throws SQLException {
 		DruidPooledConnection con = DatabaseConnection.getInstance().getConnection();
 		PreparedStatement ps;
-		ps = con.prepareStatement(
-				"SELECT `playerid`,`level`,`levelsum`,`coin`,`grids`, `attrMap`  FROM `maple_union`");
+		ps = con.prepareStatement("SELECT `playerid`,`level`,`levelsum`,`coin`,`grids`, `attrMap`  FROM `maple_union`");
 		ResultSet rs = ps.executeQuery();
 		while (rs.next()) {
 			int playerId = rs.getInt(1);
-			playerInfo.put(playerId, new UnionInfo(playerId, rs.getInt(2), rs.getInt(3),
-					rs.getInt(4), rs.getString(5), rs.getString(6)));
+			playerInfo.put(playerId, new UnionInfo(playerId, rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getString(5),
+					rs.getString(6)));
 		}
 		ps.close();
 		con.close();
@@ -496,8 +491,7 @@ public class MapleUnion {
 	 * @return 无
 	 */
 	public void saveToDb(int playerId) throws SQLException {
-		if (playerInfo == null || playerInfo.size() == 0
-				|| (playerId >= 0 && !playerInfo.containsKey(playerId))) {
+		if (playerInfo == null || playerInfo.size() == 0 || (playerId >= 0 && !playerInfo.containsKey(playerId))) {
 			return;
 		}
 		DruidPooledConnection con = DatabaseConnection.getInstance().getConnection();
@@ -506,17 +500,14 @@ public class MapleUnion {
 			for (int id : playerInfo.keySet()) {
 				UnionInfo unionInfo = playerInfo.get(id);
 				ps = con.prepareStatement(
-						"INSERT INTO `maple_union` (`coin`,`grids`,`attrMap`) VALUES ("
-								+ unionInfo.getUnionCoin() + "," + unionInfo.getGrids() + ","
-								+ unionInfo.getAttrMapping() + ");");
+						"INSERT INTO `maple_union` (`coin`,`grids`,`attrMap`) VALUES (" + unionInfo.getUnionCoin() + ","
+								+ unionInfo.getGrids() + "," + unionInfo.getAttrMapping() + ");");
 				ps.executeUpdate();
 			}
 		} else {
 			UnionInfo unionInfo = playerInfo.get(playerId);
-			ps = con.prepareStatement(
-					"INSERT INTO `maple_union` (`coin`,`grids`,`attrMap`) VALUES ("
-							+ unionInfo.getUnionCoin() + "," + unionInfo.getGrids() + ","
-							+ unionInfo.getAttrMapping() + ");");
+			ps = con.prepareStatement("INSERT INTO `maple_union` (`coin`,`grids`,`attrMap`) VALUES ("
+					+ unionInfo.getUnionCoin() + "," + unionInfo.getGrids() + "," + unionInfo.getAttrMapping() + ");");
 			ps.executeUpdate();
 		}
 		ps.close();
